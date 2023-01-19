@@ -70,7 +70,7 @@ describe('license parser', function() {
         var data = license('asdf\nasdf\nBSD\nasdf\n');
         assert.equal(data, 'BSD*');
     });
-    
+
     it('Non-BSD word check', function() {
         var data = license('prefixBSD\n');
         assert.notEqual(data, 'BSD*');
@@ -80,7 +80,7 @@ describe('license parser', function() {
         var data = license('asdf\nasdf\nApache License\nasdf\n');
         assert.equal(data, 'Apache*');
     });
-    
+
     it('Non-Apache word check', function() {
         var data = license('prefixApache License\n');
         assert.notEqual(data, 'Apache*');
@@ -95,7 +95,7 @@ describe('license parser', function() {
         var data = license('asdf\nasdf\nWTFPL\nasdf\n');
         assert.equal(data, 'WTFPL*');
     });
-    
+
     it('Non-WTF word check', function() {
         var data = license('prefixWTFPL\n');
         assert.notEqual(data, 'WTFPL*');
@@ -120,6 +120,12 @@ describe('license parser', function() {
         var data = license('The person who associated a work with this deed has dedicated the work to the public domain by waiving all of his or her rights to the work worldwide under copyright law, including all related and neighboring rights, to the extent allowed by law.\n\nYou can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.\n');
         assert.equal(data, 'CC0-1.0*');
     });
+
+    it('ELv2 word check', function() {
+        var data = license('Elastic License 2.0');
+        assert.equal(data, 'ELv2');
+    });
+
 
     it('Public Domain check', function() {
         var data = license('Public Domain');
